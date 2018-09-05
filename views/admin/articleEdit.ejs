@@ -1,0 +1,72 @@
+<% include ./header %>
+
+	<ol class="breadcrumb">
+	  <li><a href="#">文章管理</a></li>
+	  <li class="active">修改文章</li>
+	</ol>
+	<!--上传文章封面表单-->
+	<form class="formAdd" action="/admin/articleImgUpdate" method="post" enctype="multipart/form-data">
+		<input type="hidden"  name="_id" value="<%= data._id %>" >
+		<div class="col-md-4">
+			<div class="input-group">
+			   <img src="/<%= data.imgurl%>" alt="" style="width:80px;height:80px;">
+			   <span class="input-group-addon">封面</span>
+			   <input type="file"  class="form-control" name="imgurl">
+			   <input type="submit"   value="上传封面" style="position:absolute;top:48px;left:148px;">
+			</div>
+		</div>
+	</form>
+	<!--更新文章数据表单-->
+	<form class="formAdd" action="/admin/articleUpdate" method="post" > 
+		<input type="hidden"  name="_id" value="<%= data._id %>" >
+		<div class="col-md-4">
+			<div class="input-group">
+			  <span class="input-group-addon">文章标题</span>
+			  <input type="text" class="form-control" name="title" value="<%= data.title %>">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="input-group">
+			  <span class="input-group-addon">作者</span>
+			  <input type="text" class="form-control" name="author" value="<%= data.author %>" >
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon">所属栏目</span>
+				<select class="form-control" name="itemId">
+					<% items.forEach(function(val){ %>
+						<option value="<%= val._id %>" <%= data.itemId.toString() == val._id.toString() ? ' selected':'' %> ><%= val.name %></option>
+					<% })%>
+				</select>
+			</div>
+		</div>		
+		<div class="col-md-4">
+			<div class="input-group">
+			  <span class="input-group-addon">关键字</span>
+			  <input type="text" class="form-control" name="keywords" value="<%= data.keywords %>" >
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="input-group">
+			  <span class="input-group-addon">文章描述</span>
+			  <input type="text" class="form-control" name="description" value="<%= data.description %>" >
+			</div>
+		</div>	
+		<div class="col-md-12" style="margin-top: 20px;">
+			<textarea id="content" name="content"> <%= data.content %> </textarea>
+		</div>
+
+		<div class="col-md-12" style="margin-top:10px;">
+			<input type="submit" value="发布文章">
+		</div>
+	</form>
+
+	<!-- 引入 富文本编辑器 -->
+	<script src="/ueditor/ueditor.config.js"></script>
+	<script src="/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		// 实例化 编辑器		
+		var ue = UE.getEditor('content');
+	</script>
+<% include ./footer %>

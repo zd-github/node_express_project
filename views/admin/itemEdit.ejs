@@ -1,0 +1,30 @@
+<% include ./header %>
+
+	<ol class="breadcrumb">
+	  <li><a href="#">栏目管理</a></li>
+	  <li class="active">编辑栏目</li>
+	</ol>
+
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="formAdd" action="/admin/itemUpdate" method="post">
+			<input type="hidden" name="_id" value="<%= data._id%>">
+			<div class="input-group">
+			  <span class="input-group-addon">栏目名称</span>
+			  <input type="text" class="form-control" name="name" value="<%= data.name%>">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon">栏目简介</span>
+			  <input type="text" class="form-control" name="info" value="<%= data.info%>">
+			</div>
+
+			<div class="input-group">
+				<input type="submit" value="提交">
+			</div>
+
+		</form>
+	</div>
+	<div class="col-md-4"></div>
+
+<% include ./footer %>

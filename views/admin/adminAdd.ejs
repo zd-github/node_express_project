@@ -1,0 +1,48 @@
+<% include ./header %>
+
+	<ol class="breadcrumb">
+	  <li><a href="#">系统设置</a></li>
+	  <li class="active">添加管理员</li>
+	</ol>
+
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="formAdd" action="/admin/adminInsert" method="post">
+
+			<div class="input-group">
+			  <span class="input-group-addon"> &nbsp; 账 &nbsp; &nbsp; 号 &nbsp; </span>
+			  <input type="text" class="form-control" name="username">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon"> &nbsp; 密 &nbsp; &nbsp; 码 &nbsp; </span>
+			  <input type="password" class="form-control" name="password">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon">确认密码</span>
+			  <input type="password" class="form-control" name="password1">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon">&nbsp; 电 &nbsp; &nbsp; 话 &nbsp; </span>
+			  <input type="text" class="form-control" name="tel">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon">验&nbsp;证&nbsp;码</span>
+			  <div class="form-control">
+				 <a href=""><img src="/admin/code"></a> &nbsp;
+				  <input type="text"  name="code" style="width:100px;">			  	
+			  </div>
+			</div>
+
+			<div class="input-group">
+				<input type="submit" value="提交">
+			</div>
+
+		</form>
+	</div>
+	<div class="col-md-4"></div>
+
+<% include ./footer %>

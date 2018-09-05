@@ -1,0 +1,65 @@
+<% include ./header %>
+
+	<ol class="breadcrumb">
+	  <li><a href="#">文章管理</a></li>
+	  <li class="active">发布文章</li>
+	</ol>
+	
+	<form class="formAdd" action="/admin/articleInsert" method="post" enctype="multipart/form-data"> 
+		<div class="col-md-4">
+			<div class="input-group">
+			  <span class="input-group-addon">文章标题</span>
+			  <input type="text" class="form-control" name="title">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="input-group">
+			  <span class="input-group-addon">作者</span>
+			  <input type="text" class="form-control" name="author">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="input-group">
+			  <span class="input-group-addon">封面</span>
+			  <input type="file" class="form-control" name="imgurl">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="input-group">
+				<span class="input-group-addon">所属栏目</span>
+				<select class="form-control" name="itemId">
+					<% items.forEach(function(val){ %>
+						<option value="<%= val._id %>"><%= val.name %></option>
+					<% })%>
+				</select>
+			</div>
+		</div>		
+		<div class="col-md-8">
+			<div class="input-group">
+			  <span class="input-group-addon">关键字</span>
+			  <input type="text" class="form-control" name="keywords">
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="input-group">
+			  <span class="input-group-addon">文章描述</span>
+			  <input type="text" class="form-control" name="description">
+			</div>
+		</div>	
+		<div class="col-md-12" style="margin-top: 20px;">
+			<textarea id="content" name="content"></textarea>
+		</div>
+
+		<div class="col-md-12" style="margin-top:10px;">
+			<input type="submit" value="发布文章">
+		</div>
+	</form>
+
+	<!-- 引入 富文本编辑器 -->
+	<script src="/ueditor/ueditor.config.js"></script>
+	<script src="/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		// 实例化 编辑器		
+		var ue = UE.getEditor('content');
+	</script>
+<% include ./footer %>
